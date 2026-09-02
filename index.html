@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-bg: #ecf0f1;
-            --text-dark: #2c3e50;
+            --primary-color: #1a1a1a;
+            --secondary-color: #404040;
+            --accent-color: #757575;
+            --light-bg: #f5f5f5;
+            --text-dark: #2a2a2a;
+            --white: #ffffff;
         }
 
         * {
@@ -24,13 +25,13 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--text-dark);
-            background-color: #f8f9fa;
+            background-color: var(--white);
         }
 
         /* Navigation */
         nav.navbar {
             background-color: var(--primary-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -40,179 +41,236 @@
             font-weight: 700;
             font-size: 1.5rem;
             color: #fff !important;
+            letter-spacing: 2px;
         }
 
         .nav-link {
-            color: rgba(255, 255, 255, 0.8) !important;
+            color: rgba(255, 255, 255, 0.7) !important;
             transition: color 0.3s ease;
-            margin: 0 10px;
+            margin: 0 15px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         .nav-link:hover {
-            color: var(--secondary-color) !important;
+            color: var(--accent-color) !important;
         }
 
         /* Header Section */
         .header-section {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
-            padding: 80px 20px;
+            padding: 100px 20px;
             text-align: center;
             margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Geometric background pattern */
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.05);
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+            z-index: 0;
+        }
+
+        .header-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 250px;
+            height: 250px;
+            background: rgba(255,255,255,0.05);
+            clip-path: polygon(100% 0, 100% 100%, 0 100%);
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
         }
 
         .header-section h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
         }
 
         .header-section .title {
             font-size: 1.5rem;
             font-weight: 300;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             opacity: 0.95;
+            letter-spacing: 0.5px;
         }
 
         .header-section .school {
             font-size: 1.1rem;
-            opacity: 0.9;
+            opacity: 0.85;
+            font-weight: 400;
         }
 
         /* Main Content */
         section {
             margin: 60px 0;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
 
         section h2 {
             color: var(--primary-color);
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 30px;
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 10px;
-            display: inline-block;
+            margin-bottom: 40px;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 20px;
+            letter-spacing: 1px;
         }
 
         /* About Section */
         .about-section {
-            background-color: white;
-            border-radius: 8px;
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--secondary-color);
             padding: 40px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(64, 64, 64, 0.1);
+            clip-path: polygon(0 0, 100% 0, 0 100%);
         }
 
         .about-section p {
             font-size: 1.1rem;
             line-height: 1.8;
             color: #555;
+            position: relative;
+            z-index: 1;
         }
 
         /* Skills Section */
         .skills-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
         }
 
         .skill-item {
             background-color: var(--secondary-color);
             color: white;
-            padding: 15px 20px;
-            border-radius: 6px;
+            padding: 20px;
             text-align: center;
             font-weight: 500;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
         }
 
         .skill-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
         }
 
         /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .project-card {
-            background-color: white;
-            border-radius: 8px;
+            background-color: var(--light-bg);
+            border: 2px solid var(--secondary-color);
+            position: relative;
+            transition: all 0.3s ease;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--secondary-color);
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+            border-color: var(--accent-color);
         }
 
         .project-header {
             background-color: var(--secondary-color);
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
+            position: relative;
+        }
+
+        .project-header::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
         }
 
         .project-header h3 {
             margin: 0;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 1;
         }
 
         .project-body {
-            padding: 20px;
+            padding: 25px 20px;
         }
 
         .project-body p {
             color: #666;
-            line-height: 1.6;
+            line-height: 1.7;
             margin: 0;
         }
 
-        /* Resume Section */
-        .resume-section {
-            background-color: white;
-            border-radius: 8px;
-            padding: 40px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .empty-state {
             text-align: center;
+            padding: 60px 20px;
+            background-color: var(--light-bg);
+            border: 2px dashed var(--accent-color);
         }
 
-        .resume-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 15px 40px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-top: 20px;
-            font-size: 1.1rem;
-        }
-
-        .resume-button:hover {
-            background-color: #c0392b;
-            transform: scale(1.05);
-        }
-
-        .resume-coming-soon {
-            font-size: 1.3rem;
-            color: #666;
-            margin-top: 20px;
+        .empty-state p {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 500;
         }
 
         /* Contact Section */
         .contact-section {
-            background-color: white;
-            border-radius: 8px;
+            background-color: var(--light-bg);
+            border-right: 4px solid var(--secondary-color);
             padding: 40px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .contact-list {
@@ -221,7 +279,7 @@
         }
 
         .contact-item {
-            margin: 20px 0;
+            margin: 25px 0;
             font-size: 1.1rem;
         }
 
@@ -229,17 +287,22 @@
             color: var(--secondary-color);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
         }
 
         .contact-item a:hover {
             color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
         }
 
         .contact-icon {
-            margin-right: 10px;
+            margin-right: 15px;
             color: var(--secondary-color);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            width: 30px;
+            text-align: center;
         }
 
         /* Footer */
@@ -247,14 +310,19 @@
             background-color: var(--primary-color);
             color: white;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
+            padding: 40px 20px;
+            margin-top: 80px;
+            letter-spacing: 0.5px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .header-section h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+
+            .header-section {
+                padding: 60px 20px;
             }
 
             .header-section .title {
@@ -262,7 +330,7 @@
             }
 
             section h2 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
             .skills-list {
@@ -288,7 +356,6 @@
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -297,9 +364,9 @@
 
     <!-- Header Section -->
     <header class="header-section" id="home">
-        <div class="container-lg">
+        <div class="container-lg header-content">
             <h1>Evelyn Perkins</h1>
-            <p class="title">Information Systems Student</p>
+            <p class="title">Finance Student</p>
             <p class="school">University of Utah</p>
         </div>
     </header>
@@ -311,7 +378,7 @@
             <h2>About Me</h2>
             <div class="about-section">
                 <p>
-                    I am an Information Systems student at the University of Utah passionate about leveraging technology to solve complex business problems. My career interests focus on data analytics and business intelligence, where I aim to transform raw data into actionable insights. I'm particularly interested in exploring how artificial intelligence can enhance decision-making and streamline business processes. Technically, I enjoy working with web development, data visualization, and emerging AI tools to create innovative solutions that drive organizational growth.
+                    I am a Finance major at the University of Utah, pursuing a minor in Management. My passions extend beyond the classroom—I'm an avid golfer and skier who values both discipline and adventure. In the professional realm, I'm deeply interested in the intersection of artificial intelligence and investment management, particularly how AI is transforming wealth management strategies. I'm fascinated by the growth of Information Systems within the finance industry and how emerging technologies enable better decision-making. My technical skills in Excel, combined with my strong communication and problem-solving abilities, position me to leverage data-driven insights in financial advisory roles.
                 </p>
             </div>
         </section>
@@ -320,66 +387,19 @@
         <section id="skills">
             <h2>Skills</h2>
             <div class="skills-list">
-                <div class="skill-item">HTML</div>
-                <div class="skill-item">CSS</div>
-                <div class="skill-item">JavaScript</div>
-                <div class="skill-item">Python</div>
-                <div class="skill-item">SQL</div>
-                <div class="skill-item">Git</div>
-                <div class="skill-item">GitHub</div>
-                <div class="skill-item">Microsoft Excel</div>
-                <div class="skill-item">Data Analytics</div>
-                <div class="skill-item">AI Prompt Engineering</div>
+                <div class="skill-item">Excel</div>
+                <div class="skill-item">Customer Service</div>
+                <div class="skill-item">Teamwork</div>
+                <div class="skill-item">Communications</div>
+                <div class="skill-item">Problem-Solving</div>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section id="projects">
             <h2>Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>AI Business Analysis</h3>
-                    </div>
-                    <div class="project-body">
-                        <p>Analyze business data using ChatGPT and other AI tools to generate insights and recommendations for organizational improvement.</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Data Visualization</h3>
-                    </div>
-                    <div class="project-body">
-                        <p>Interactive dashboard built with Tableau to visualize key business metrics and performance indicators in real-time.</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Web Development</h3>
-                    </div>
-                    <div class="project-body">
-                        <p>Responsive Bootstrap website demonstrating modern web design principles, mobile-first approach, and clean user interface.</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Process Improvement</h3>
-                    </div>
-                    <div class="project-body">
-                        <p>AI-assisted business workflow redesign project identifying inefficiencies and implementing automation solutions.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Resume Section -->
-        <section id="resume">
-            <h2>Resume</h2>
-            <div class="resume-section">
-                <p class="resume-coming-soon">📄 Resume coming soon</p>
+            <div class="empty-state">
+                <p>📊 Projects coming soon</p>
             </div>
         </section>
 
@@ -390,7 +410,7 @@
                 <ul class="contact-list">
                     <li class="contact-item">
                         <i class="fas fa-envelope contact-icon"></i>
-                        <a href="mailto:your-email@utah.edu">your-email@utah.edu</a>
+                        <a href="mailto:u1569230@umail.utah.edu">u1569230@umail.utah.edu</a>
                     </li>
                     <li class="contact-item">
                         <i class="fab fa-github contact-icon"></i>
@@ -398,7 +418,7 @@
                     </li>
                     <li class="contact-item">
                         <i class="fab fa-linkedin contact-icon"></i>
-                        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/evelyneperkins25" target="_blank">linkedin.com/in/evelyneperkins25</a>
                     </li>
                 </ul>
             </div>
